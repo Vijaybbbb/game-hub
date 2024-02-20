@@ -14,9 +14,9 @@ function App() {
       >
         <GridItem area='nav'><Navabar/></GridItem>
         <Show above ='lg'>
-        <GridItem area='aside' bg='gold'>Aside</GridItem> {/* Change area name to 'aside' */}
+        <GridItem area='aside'>Aside</GridItem> {/* Change area name to 'aside' */}
         </Show>
-        <GridItem area='main' bg='dodgerblue'>Main</GridItem> {/* Change area name to 'main' */}
+        <GridItem area='main'>Main</GridItem> {/* Change area name to 'main' */}
       </Grid>
     </>
   )
