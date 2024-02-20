@@ -1,5 +1,6 @@
 import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react'
+import Navabar from './components/Navabar'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         }}
        // gap={4} // Add gap between grid items
       >
-        <GridItem area='nav' bg='coral'>Nav</GridItem>
+        <GridItem area='nav'><Navabar/></GridItem>
         <Show above ='lg'>
         <GridItem area='aside' bg='gold'>Aside</GridItem> {/* Change area name to 'aside' */}
         </Show>
