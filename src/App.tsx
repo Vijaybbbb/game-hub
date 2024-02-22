@@ -12,11 +12,15 @@ function App() {
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`
         }}
+        templateColumns={{
+          base:'1fr',
+          lg:'200px  1fr'
+        }}
        // gap={4} // Add gap between grid items
       >
         <GridItem area='nav'><Navabar/></GridItem>
         <Show above ='lg'>
-        <GridItem area='aside'>
+        <GridItem area='aside' paddingX={5}>
             <GenreList/>
         </GridItem> {/* Change area name to 'aside' */}
         </Show>
