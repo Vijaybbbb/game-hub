@@ -5,9 +5,11 @@ import GameGrid from './components/GameGrid'
 import GenreList from './components/GenreList'
 import { useState } from 'react'
 import { Genre } from './hooks/useGenres'
+import PlatformSelector from './components/PlatformSelector'
+
 
 function App() {
-  const [selectedGenre,setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
 
   return (
     <>
@@ -17,18 +19,21 @@ function App() {
           lg: `"nav nav" "aside main"`
         }}
         templateColumns={{
-          base:'1fr',
-          lg:'200px  1fr'
+          base: '1fr',
+          lg: '200px  1fr'
         }}
-       // gap={4} // Add gap between grid items
+      // gap={4} // Add gap between grid items
       >
-        <GridItem area='nav'><Navabar/></GridItem>
-        <Show above ='lg'>
-        <GridItem area='aside' paddingX={5}>
-            <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>{setSelectedGenre(genre)}}/>
-        </GridItem> {/* Change area name to 'aside' */}
+        <GridItem area='nav'><Navabar /></GridItem>
+        <Show above='lg'>
+          <GridItem area='aside' paddingX={5}>
+            <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => { setSelectedGenre(genre) }} />
+          </GridItem> {/* Change area name to 'aside' */}
         </Show>
-        <GridItem area='main'><GameGrid selectedGenre={selectedGenre}/></GridItem> {/* Change area name to 'main' */}
+        <GridItem area='main'>
+          <PlatformSelector/>
+          <GameGrid selectedGenre={selectedGenre} />
+        </GridItem> {/* Change area name to 'main' */}
       </Grid>
     </>
   )
