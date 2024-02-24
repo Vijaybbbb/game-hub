@@ -1,18 +1,17 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
-import React from 'react'
 import { BsChevronDown } from 'react-icons/bs'
+import usePlatforms from '../hooks/usePlatforms'
+import { distance2D } from 'framer-motion'
 
  const PlatformSelector = () => {
+  const {data,error}  = usePlatforms()
+  if(error) return null
   return (
     <div>
       <Menu>
-              <MenuButton as = {Button} >Platforms</MenuButton>
+              <MenuButton as = {Button} rightIcon={<BsChevronDown/>} >Platforms</MenuButton>
               <MenuList>
-                     <MenuItem></MenuItem>
-                     <MenuItem></MenuItem>
-                     <MenuItem></MenuItem>
-                     <MenuItem></MenuItem>
-
+                     {data.map((platform)=><MenuItem key={platform.id}>{platform.name}</MenuItem>)}
               </MenuList>
       </Menu>
     </div>
