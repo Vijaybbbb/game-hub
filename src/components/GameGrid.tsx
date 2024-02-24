@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import apiClient from '../services/api-client'
 import axios from 'axios';
-import useGames from '../hooks/useGames';
+import useGames, { PLatform } from '../hooks/useGames';
 import { SimpleGrid, Text } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
@@ -10,11 +10,12 @@ import { Genre } from '../hooks/useGenres';
 
 interface Props{
        selectedGenre:Genre | null
+       selectedPlatform:PLatform | null
 }
 
 
-const GameGrid = ({selectedGenre}:Props) => {
-       const { data, error, isLoading } = useGames(selectedGenre)
+const GameGrid = ({selectedGenre,selectedPlatform}:Props) => {
+       const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform)
        const Skeletons = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
      
        return (
