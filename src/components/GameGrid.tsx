@@ -7,15 +7,16 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContanier from './GameCardContanier';
 import { Genre } from '../hooks/useGenres';
+import { GameQuery } from '../App';
 
 interface Props{
-       selectedGenre:Genre | null
-       selectedPlatform:PLatform | null
+       gameQuery:GameQuery;
+      
 }
 
 
-const GameGrid = ({selectedGenre,selectedPlatform}:Props) => {
-       const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform)
+const GameGrid = ({gameQuery}:Props) => {
+       const { data, error, isLoading } = useGames(gameQuery)
        const Skeletons = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
      
        return (
