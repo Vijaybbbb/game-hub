@@ -1,5 +1,5 @@
 import './App.css'
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import Navabar from './components/Navabar'
 import GameGrid from './components/GameGrid'
 import GenreList from './components/GenreList'
@@ -40,10 +40,12 @@ function App() {
           </GridItem> {/* Change area name to 'aside' */}
         </Show>
         <GridItem area='main'>
-          <HStack paddingLeft={10}>
-          <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
+          <Flex paddingLeft={10}>
+            <Box marginRight={5}>
+            <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
+            </Box>
            <SortSelector sortOrder={gameQuery.sortOrder} onSelecSortOrder={(sortOrder)=>setGameQuery({...gameQuery,sortOrder})}/>
-           </HStack>
+           </Flex>
           <GameGrid gameQuery={gameQuery} />
         </GridItem> {/* Change area name to 'main' */}
       </Grid>
