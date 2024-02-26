@@ -8,13 +8,17 @@ import { Genre } from './hooks/useGenres'
 import PlatformSelector from './components/PlatformSelector'
 import { PLatform } from './hooks/useGames'
 import SortSelector from './components/SortSelector'
+import GameHeading from './components/GameHeading'
+import MainHeading from './components/MainHeading'
 
 
 export interface GameQuery{
   genre:Genre | null;
   platform : PLatform | null;
-  sortOrder:string
+  sortOrder:string;
+  searchText:string;
 }
+
 
 function App() {
 
@@ -33,14 +37,19 @@ function App() {
         }}
       // gap={4} // Add gap between grid items
       >
-        <GridItem area='nav'><Navabar /></GridItem>
+        <GridItem area='nav'>
+          <MainHeading/>
+          <Navabar onSearch={(searchText)=> setGameQuery({...gameQuery,searchText})} />
+        </GridItem>
         <Show above='lg'>
           <GridItem area='aside' paddingX={5} marginBottom={3}>
             <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => { setGameQuery({...gameQuery,genre}) }} />
           </GridItem> {/* Change area name to 'aside' */}
         </Show>
         <GridItem area='main'>
+          <GameHeading gameQuery={gameQuery}/>
           <Flex paddingLeft={10}>
+
             <Box marginRight={5}>
             <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
             </Box>
